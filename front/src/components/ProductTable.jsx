@@ -1,29 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { getProducts, getSpecialPrice } from "../services/api";
+
+import useProducts from "../hooks/useProducts";
+import useSpecialPrices from "../hooks/useSpecialPrices";
 
 const ProductTable = () => {
-  const [products, setProducts] = useState([]);
-  const [specialPrices, setSpecialPrices] = useState({});
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const productsData = await getProducts();
-      setProducts(productsData);
-
-      // Obtener precios especiales para el usuario actual
-      const userId = "123"; // Reemplaza con el ID del usuario actual
-      const prices = {};
-      for (const product of productsData) {
-        const specialPrice = await getSpecialPrice(userId, product._id);
-        if (specialPrice) {
-          prices[product._id] = specialPrice.specialPrice;
-        }
-      }
-      setSpecialPrices(prices);
-    };
-
-    fetchData();
-  }, []);
+  const userId = "123"; // Reemplaza con el ID del usuario actual
+  const { products } = useProducts();
+  const { specialPrices } = useSpecialPrices(userId);
 
   return (
     <table className="w-full border-collapse">

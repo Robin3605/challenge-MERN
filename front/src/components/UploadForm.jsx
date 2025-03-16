@@ -1,23 +1,15 @@
-import React, { useState, useEffect } from "react";
-import { getProducts, getUsers, createSpecialPrice } from "../services/api";
+import React, { useState } from "react";
+import { createSpecialPrice } from "../services/api";
+import useProducts from "../hooks/useProducts";
+import useUsers from "../hooks/useUsers";
+
 
 const UploadForm = () => {
   const [userId, setUserId] = useState("");
   const [productId, setProductId] = useState("");
   const [specialPrice, setSpecialPrice] = useState("");
-  const [users, setUsers] = useState([]);
-  const [products, setProducts] = useState([]);
-
-  // Obtener usuarios y productos al cargar el componente
-  useEffect(() => {
-    const fetchData = async () => {
-      const usersData = await getUsers();
-      const productsData = await getProducts();
-      setUsers(usersData);
-      setProducts(productsData);
-    };
-    fetchData();
-  }, []);
+  const { users } = useUsers();
+  const { products } = useProducts();
 
   const handleSubmit = async (e) => {
     e.preventDefault();

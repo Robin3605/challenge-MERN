@@ -15,6 +15,7 @@ Además, el Frontend ofrece una interfaz interactiva donde los usuarios pueden c
 ## Justificación de elecciones técnicas
 ### Frontend
 - **React**: Elegí React por su flexibilidad, amplia comunidad y facilidad para crear interfaces dinámicas y reactivas.
+- **TailwindCSS**: Para los estilos ya que es un framework intuitivo y facil de usar.
 - **React Router**: Para manejar la navegación entre páginas de manera eficiente.
 - **Axios**: Para realizar solicitudes HTTP al Backend de manera sencilla.
 - **Formularios Interactivos**: Implementé formularios con listas desplegables para seleccionar usuarios y productos, lo que facilita la creación de precios especiales sin necesidad de conocer los IDs.
@@ -41,6 +42,7 @@ Además, el Frontend ofrece una interfaz interactiva donde los usuarios pueden c
   /src
     /components      # Componentes reutilizables (Navbar, UploadForm, etc.)
     /pages           # Páginas de la aplicación (Home, Upload, etc.)
+    /hooks           # custom hooks para hacer el codigo mas limpio y reutilizable
     /services        # Servicios para interactuar con la API
     App.jsx          # Punto de entrada del Frontend
     index.css        # vinculamos taiwind para poder dar los estilos
